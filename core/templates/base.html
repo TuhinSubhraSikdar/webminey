@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webminey</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/your-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="cursor-arc"></div>
+
+    {% include 'partials/navbar.html' %}
+
+    {% block content %}{% endblock %}
+
+    <script src="{% static 'core/js/cursor.js' %}"></script>
+    <script src="{% static 'core/js/interactions.js' %}"></script>
+
+</body>
+</html>

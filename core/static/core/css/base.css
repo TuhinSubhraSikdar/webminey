@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background: #05070d;
+    color: white;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,120,0.15), transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(255,0,80,0.12), transparent 30%);
+    z-index: -1;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 60px;
+    align-items: center;
+    backdrop-filter: blur(12px);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #00ff88;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00ff88;
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+}
+
+.socials a {
+    color: white;
+    font-size: 20px;
+}
+
+
+/* cursor */
+.cursor-arc {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #00ff88;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
