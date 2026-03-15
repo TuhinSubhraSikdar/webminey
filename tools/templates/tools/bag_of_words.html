@@ -20,46 +20,55 @@
             </div>
         </form>
 
-        {% if words %}
+        {% if result.error %}
+        <p>{{ result.error }}</p>
+        {% endif %}
+        
+        {% if result %}
+
         <div class="bow-results">
 
-    <div class="bow-summary-card">
-        <h3>Total Unique Words</h3>
-        <span>{{ total_words }}</span>
-    </div>
+            <!-- SUMMARY -->
+            <div class="bow-summary-card">
+                <h3>Total Unique Words</h3>
+                <span>{{ result.unique_words }}</span>
+            </div>
 
-    <div class="bow-analysis-layout">
+            <div class="bow-analysis-layout">
 
-        <!-- TABLE -->
-        <div class="bow-table-wrap">
-            <table class="bow-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Word</th>
-                        <th>Count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for word, count in words %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ word }}</td>
-                        <td>{{ count }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                <!-- TABLE -->
+                <div class="bow-table-wrap">
+                    <table class="bow-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Word</th>
+                                <th>Count</th>
+                                <th>Density</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in result.words %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ item.word }}</td>
+                                <td>{{ item.count }}</td>
+                                <td>{{ item.density }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PIE CHART -->
+                <div class="bow-chart-card">
+                    <canvas id="wordChart"></canvas>
+                </div>
+
+            </div>
+
         </div>
 
-        <!-- PIE CHART -->
-        <div class="bow-chart-card">
-            <canvas id="wordChart"></canvas>
-        </div>
-
-    </div>
-
-</div>
         {% endif %}
 
     </div>
@@ -67,16 +76,17 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+{% if result %}
 <script>
 const labels = [
-    {% for word, count in words %}
-        "{{ word }}",
+    {% for item in result.words %}
+        "{{ item.word }}",
     {% endfor %}
 ];
 
 const data = [
-    {% for word, count in words %}
-        {{ count }},
+    {% for item in result.words %}
+        {{ item.count }},
     {% endfor %}
 ];
 
@@ -101,4 +111,6 @@ new Chart(ctx, {
     }
 });
 </script>
+{% endif %}
+
 {% endblock %}

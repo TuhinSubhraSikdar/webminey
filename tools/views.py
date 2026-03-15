@@ -10,6 +10,6 @@ def bag_of_words_view(request):
 
         result = extract_bag_of_words(url)
 
-        context = result
+        context['result'] = result
 
     return render(request, 'tools/bag_of_words.html', context)
