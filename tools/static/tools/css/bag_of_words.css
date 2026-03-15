@@ -1,0 +1,242 @@
+.bow-section {
+    min-height: 100vh;
+    padding: 100px 80px;
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+
+.bow-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.bow-header h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 14px;
+}
+
+.bow-header p {
+    color: #98a2b3;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* -------------------------
+   INPUT AREA
+------------------------- */
+
+.bow-form {
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 60px;
+}
+
+.bow-input-wrap {
+    display: flex;
+    gap: 16px;
+    padding: 14px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #0d1118, #131923);
+    box-shadow:
+        12px 12px 24px rgba(0,0,0,0.45),
+        -8px -8px 18px rgba(255,255,255,0.03),
+        inset 1px 1px 1px rgba(255,255,255,0.03);
+}
+
+.bow-input-wrap input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    padding: 18px 20px;
+}
+
+.bow-input-wrap input::placeholder {
+    color: #6f7b90;
+}
+
+.bow-input-wrap button {
+    background: linear-gradient(90deg, #00ff88, #ff0055);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 25px rgba(0,255,136,0.18);
+}
+
+.bow-input-wrap button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0,255,136,0.25);
+}
+
+/* -------------------------
+   SUMMARY CARD
+------------------------- */
+
+.bow-summary-card {
+    max-width: 320px;
+    margin: auto;
+    padding: 28px;
+    border-radius: 28px;
+    text-align: center;
+    margin-bottom: 50px;
+
+    background: linear-gradient(145deg, #0d1118, #131923);
+    box-shadow:
+        12px 12px 24px rgba(0,0,0,0.45),
+        -8px -8px 18px rgba(255,255,255,0.03);
+}
+
+.bow-summary-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.bow-summary-card span {
+    font-size: 42px;
+    font-weight: 800;
+    color: #00ff88;
+}
+
+/* -------------------------
+   WORD GRID
+------------------------- */
+
+/* -------------------------
+   TABLE + CHART LAYOUT
+------------------------- */
+
+.bow-analysis-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* TABLE CARD */
+
+.bow-table-wrap {
+    background: linear-gradient(145deg, #0d1118, #131923);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow:
+        12px 12px 24px rgba(0,0,0,0.45),
+        -8px -8px 18px rgba(255,255,255,0.03);
+    overflow-x: auto;
+}
+
+/* TABLE */
+
+.bow-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.bow-table th,
+.bow-table td {
+    padding: 16px 14px;
+    text-align: left;
+}
+
+.bow-table thead {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.bow-table th {
+    color: #00ff88;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.bow-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: 0.3s;
+}
+
+.bow-table tbody tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* CHART CARD */
+
+.bow-chart-card {
+    background: linear-gradient(145deg, #0d1118, #131923);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow:
+        12px 12px 24px rgba(0,0,0,0.45),
+        -8px -8px 18px rgba(255,255,255,0.03);
+}
+/* -------------------------
+   TABLET
+------------------------- */
+
+@media (max-width: 992px) {
+
+    .bow-section {
+        padding: 80px 40px;
+    }
+
+    .bow-header h1 {
+        font-size: 52px;
+    }
+
+    .bow-analysis-layout {
+    grid-template-columns: 1fr;
+}
+}
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 768px) {
+
+    .bow-section {
+        padding: 60px 24px;
+    }
+
+    .bow-header h1 {
+        font-size: 38px;
+    }
+
+    .bow-header p {
+        font-size: 16px;
+    }
+
+    .bow-input-wrap {
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    .bow-input-wrap button {
+        width: 100%;
+    }
+
+}
+
+/* -------------------------
+   SMALL MOBILE
+------------------------- */
+
+@media (max-width: 480px) {
+
+    .bow-header h1 {
+        font-size: 32px;
+    }
+
+    .bow-section {
+        padding: 50px 18px;
+    }
+}

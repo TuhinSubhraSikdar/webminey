@@ -1,1 +1,104 @@
-<h1>Bag of Words Tool</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'tools/css/bag_of_words.css' %}">
+
+<section class="bow-section">
+    <div class="bow-container">
+
+        <div class="bow-header">
+            <h1>Bag <span class="tag">Of Words</span></h1>
+            <p>Extract repeated words from any webpage instantly.</p>
+        </div>
+
+        <form method="POST" class="bow-form">
+            {% csrf_token %}
+            <div class="bow-input-wrap">
+                <input type="url" name="url" placeholder="Enter webpage URL..." required>
+                <button type="submit">Analyze</button>
+            </div>
+        </form>
+
+        {% if words %}
+        <div class="bow-results">
+
+    <div class="bow-summary-card">
+        <h3>Total Unique Words</h3>
+        <span>{{ total_words }}</span>
+    </div>
+
+    <div class="bow-analysis-layout">
+
+        <!-- TABLE -->
+        <div class="bow-table-wrap">
+            <table class="bow-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Word</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word, count in words %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ word }}</td>
+                        <td>{{ count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- PIE CHART -->
+        <div class="bow-chart-card">
+            <canvas id="wordChart"></canvas>
+        </div>
+
+    </div>
+
+</div>
+        {% endif %}
+
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = [
+    {% for word, count in words %}
+        "{{ word }}",
+    {% endfor %}
+];
+
+const data = [
+    {% for word, count in words %}
+        {{ count }},
+    {% endfor %}
+];
+
+const ctx = document.getElementById('wordChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: data
+        }]
+    },
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

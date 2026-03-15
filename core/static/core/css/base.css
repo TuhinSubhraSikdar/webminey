@@ -29,6 +29,10 @@ body::before {
     font-weight: 800;
     color: #00ff88;
 }
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
 
 .nav-links {
     display: flex;
